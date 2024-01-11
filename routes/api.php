@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ShopController;
 
 
 /*
@@ -26,6 +28,11 @@ Route::get('/alumnos', [AlumnoController::class, 'index']);
 
 Route::post('/alumnos', [AlumnoController::class, 'store']);
 
+//One-to-One
+Route::get('/shops/{id}/customer', [ShopController::class, 'getCustomer']);
+
+//many to one
+Route::get('/shops/{id}/products', [ShopController::class, 'getProducts']);
 
 
 Route::middleware('validateId')->group(function () {
